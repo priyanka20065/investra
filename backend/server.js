@@ -13,7 +13,7 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 
-/* -------------------- CORS CONFIG -------------------- */
+/* -------------------- ALLOWED ORIGINS -------------------- */
 
 const allowedOrigins = [
     "https://investra-dxlc.vercel.app",
@@ -21,26 +21,26 @@ const allowedOrigins = [
     "http://localhost:5173"
 ];
 
-// Express CORS
+/* -------------------- CORS (EXPRESS) -------------------- */
+
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin) return callback(null, true);
 
-        // Allow known origins
         if (allowedOrigins.includes(origin)) {
             return callback(null, true);
         }
 
-        // TEMP SAFE MODE: allow everything (prevents Render crashes)
-        return callback(null, true);
+        return callback(new Error("Not allowed by CORS"));
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
-// Handle preflight requests safely
-app.options("*", cors());
+/* -------------------- FIX PRE-FLIGHT -------------------- */
+// IMPORTANT: avoids Express "*" crash
+app.options("/*", cors());
 
 /* -------------------- MIDDLEWARE -------------------- */
 
@@ -50,7 +50,7 @@ app.use(express.json());
 
 const io = new Server(server, {
     cors: {
-        origin: "*", // SAFE FIX (no crash)
+        origin: allowedOrigins,
         methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         credentials: true
     }
@@ -61,7 +61,10 @@ global.io = io;
 /* -------------------- SOCKET AUTH -------------------- */
 
 io.use((socket, next) => {
-    const token = socket.handshake.auth.token || socket.handshake.query.token;
+    const token =
+        socket.handshake.auth.token ||
+        socket.handshake.query.token;
+
     if (!token) return next(new Error("Authentication error"));
 
     try {
@@ -81,7 +84,7 @@ io.on("connection", (socket) => {
         socket.join(`user_${socket.userId}`);
         socket.join(`session_${socket.sessionId}`);
 
-        console.log(`[Socket] User ${socket.userId} connected`);
+        console.log(`[Socket] Connected User ${socket.userId}`);
     }
 });
 
@@ -92,11 +95,17 @@ app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/trade", require("./routes/tradeRoutes"));
 app.use("/api/payment", require("./routes/paymentRoutes"));
 
+/* -------------------- HEALTH CHECK -------------------- */
+
+app.get("/", (req, res) => {
+    res.send("Backend is running 🚀");
+});
+
 /* -------------------- ERROR HANDLER -------------------- */
 
 app.use(require("./middleware/error"));
 
-/* -------------------- SERVER START -------------------- */
+/* -------------------- START SERVER -------------------- */
 
 const PORT = process.env.PORT || 5000;
 
