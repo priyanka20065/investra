@@ -583,4 +583,4 @@ if __name__ == "__main__":
     print(f"   Providers: {', '.join(providers)}")
     print("   /chat         → FAQ chatbot (Ollama)")
     print("   /mentor_chat  → Vega mentor (Tools + LLM)\n")
-    app.run(host="0.0.0.0", port=5001, debug=False)
+    app.run(host="0.0.0.0", port=5000, debug=False)
