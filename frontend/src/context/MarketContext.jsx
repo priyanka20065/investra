@@ -5,7 +5,7 @@ import { useToast } from './ToastContext';
 import { getMockStockData, getStockBySymbol } from '../data/mockStocks';
 import api from '../services/api';
 
-const STOCK_API = 'http://localhost:5005/api/stocks';
+const STOCK_API = `${import.meta.env.VITE_API_URL || 'http://localhost:5005/api'}/stocks`;
 
 const MarketContext = createContext(null);
 

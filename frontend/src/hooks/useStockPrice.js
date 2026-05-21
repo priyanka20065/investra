@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
 import { getMockStockData } from '../data/mockStocks';
 
-const API_BASE = 'http://localhost:5005';
+const API_BASE = import.meta.env.VITE_SOCKET_URL || import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5005';
 
 /**
  * useStockPrice — Listens for live stock data via WebSockets (Socket.io).

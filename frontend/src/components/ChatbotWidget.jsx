@@ -28,7 +28,8 @@ const ChatbotWidget = () => {
         setIsTyping(true);
 
         try {
-            const response = await fetch('http://localhost:5001/chat', {
+            const botUrl = import.meta.env.VITE_BOT_URL || 'http://localhost:5001';
+            const response = await fetch(`${botUrl}/chat`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

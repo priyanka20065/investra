@@ -281,7 +281,8 @@ def get_stock_news(company_name: str) -> dict:
     ticker_symbol = _resolve_ticker(company_name)
     try:
         import urllib.request
-        url = f"http://localhost:5005/api/stocks/news/{ticker_symbol}"
+        backend_url = os.environ.get("BACKEND_URL", "http://localhost:5005").rstrip("/")
+        url = f"{backend_url}/api/stocks/news/{ticker_symbol}"
         req = urllib.request.Request(url)
         with urllib.request.urlopen(req) as response:
             api_data = json.loads(response.read().decode())
