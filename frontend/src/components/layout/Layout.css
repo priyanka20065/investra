@@ -1,0 +1,26 @@
+.layout-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--background-color);
+}
+
+.main-content-wrapper {
+    flex: 1;
+    transition: margin-left var(--transition-speed);
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content-wrapper.sidebar-open {
+    margin-left: var(--sidebar-width);
+}
+
+.main-content-wrapper.sidebar-collapsed {
+    margin-left: var(--sidebar-width-collapsed);
+}
+
+.page-content {
+    padding: 24px;
+    flex: 1;
+    overflow-y: auto;
+}

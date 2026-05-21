@@ -1,0 +1,10 @@
+flask
+flask-cors
+ollama
+langchain
+langchain-community
+langchain-text-splitters
+chromadb
+google-generativeai
+yfinance
+python-dotenv

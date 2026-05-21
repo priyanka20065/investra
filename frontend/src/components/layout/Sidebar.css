@@ -1,0 +1,191 @@
+.sidebar {
+    background-color: var(--bg-secondary);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    border-right: 1px solid var(--card-border);
+    transition: width var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-x: hidden;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+}
+
+[data-theme='dark'] .sidebar {
+    background-color: rgba(15, 23, 42, 0.97);
+    border-right-color: rgba(255, 255, 255, 0.04);
+}
+
+.sidebar.open {
+    width: var(--sidebar-width);
+}
+
+.sidebar.collapsed {
+    width: var(--sidebar-width-collapsed);
+}
+
+/* Logo */
+.sidebar-logo {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--card-border);
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.logo-icon {
+    min-width: 34px;
+    height: 34px;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+
+.logo-text {
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--text-main);
+    white-space: nowrap;
+    letter-spacing: -0.3px;
+}
+
+/* Navigation */
+.sidebar-nav {
+    padding: 16px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 11px 14px;
+    color: var(--text-muted);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    height: 46px;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+}
+
+.sidebar-link:hover {
+    background-color: var(--primary-soft);
+    color: var(--text-main);
+    transform: translateX(2px);
+}
+
+.sidebar-link.active {
+    background-color: var(--primary-soft);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.sidebar-link.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 0 4px 4px 0;
+}
+
+.sidebar-link .icon {
+    font-size: 1.15rem;
+    min-width: 32px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar-link .label {
+    margin-left: 10px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.sidebar-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--card-border), transparent);
+    margin: 8px 16px;
+}
+
+/* Footer */
+.sidebar-footer {
+    padding: 16px;
+    border-top: 1px solid var(--card-border);
+}
+
+.demo-balance-card-small {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.06), rgba(37, 99, 235, 0.02));
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(37, 99, 235, 0.1);
+}
+
+.db-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.info-icon {
+    width: 14px;
+    height: 14px;
+    background-color: var(--card-border);
+    color: var(--text-muted);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    cursor: help;
+}
+
+.db-amount {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.reset-funds-btn {
+    width: 100%;
+    padding: 9px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+}
+
+.reset-funds-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}

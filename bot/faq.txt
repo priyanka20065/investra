@@ -1,0 +1,606 @@
+PROJECT OVERVIEW & CONTEXT FOR AI MODEL
+Investra is a dual-mode stock market platform offering both a Live Trading environment and a Paper Trading educational simulation. The platform leverages live stock data from the Yahoo Finance API to provide REAL-TIME, actual pricing, charts, and market data for the Nifty 50 and other major index stocks. The stock prices and news are ALWAYS REAL in both modes.
+
+In "Paper Trading Mode", the platform acts as an educational simulation. While the STOCK PRICES ARE REAL AND LIVE, the money used is fake. User balances, portfolios, gains, and losses are virtual and strictly for practice. Users cannot withdraw these virtual funds, but they can practice trading safely without financial risk using real-world real-time prices.
+
+In "Live Mode", users deposit and trade with actual real money in the live stock market. Real financial risk is involved in Live Mode. The bot must clarify whether a user is asking about Paper Trading or Live Mode when discussing funds, risks, or withdrawals, but MUST clarify that stock data is ALWAYS real regardless of the mode.
+
+---
+Q1: What is Investa?
+A: Investra is a dual-mode platform offering both Live Trading with real money and a Paper Trading simulation for learning.
+
+Q2: Is Investa free?
+A: Yes, Investa is free to use.
+
+Q3: Do I need real money?
+A: It depends! Paper Trading uses virtual funds, while Live Mode uses real money.
+
+Q4: Is this real trading?
+A: Investra offers both real trading (Live Mode) and a simulation (Paper Trading Mode).
+
+Q5: Can beginners use Investa?
+A: Yes, Investa is beginner-friendly.
+
+Q6: Do I need experience?
+A: No prior experience is required.
+
+Q7: Can I lose real money?
+A: In Paper Trading, trades are simulated and you cannot lose real money. In Live Mode, real financial risk applies.
+
+Q8: How do I start trading?
+A: Create an account, then either deposit real funds for Live Mode or use virtual funds for Paper Trading.
+
+Q9: What markets are available?
+A: Real-time stock market data from Yahoo Finance for the Nifty 50 and more.
+
+Q10: Can I reset my portfolio?
+A: Yes, you can reset virtual funds.
+
+Q11: Does Investa give investment advice?
+A: Investra is for both real trading and learning.
+
+Q12: Are stock prices real?
+A: Yes, absolutely! Regardless of whether you are in Paper Trading or Live Mode, all stock prices and market data are real-time, live data from Yahoo Finance.
+
+Q13: Can I track performance?
+A: Yes, Investa shows portfolio performance.
+
+Q14: Is there a leaderboard?
+A: Yes, top performers may be shown.
+
+Q15: Can I practice day trading?
+A: Yes, within simulation limits.
+
+Q16: Can I buy any stock?
+A: Only available simulated stocks.
+
+Q17: What is virtual balance?
+A: Virtual balance is fake money used ONLY in Paper Trading mode to practice.
+
+Q18: Can I sell anytime?
+A: Yes, in the simulation.
+
+Q19: Does Investa support mobile?
+A: Yes, it is responsive.
+
+Q20: Can I search stocks?
+A: Yes, search feature available.
+
+Q21: How do I buy stock?
+A: Select stock and click buy.
+
+Q22: How do I sell stock?
+A: Go to portfolio and click sell.
+
+Q23: What is portfolio?
+A: Your simulated investments.
+
+Q24: Can I view charts?
+A: Yes, price charts available.
+
+Q25: Is login required?
+A: Yes, to save progress.
+
+Q26: Can I logout?
+A: Yes, anytime.
+
+Q27: Can I change username?
+A: Yes, in settings.
+
+Q28: Can I delete account?
+A: Yes, contact support.
+
+Q29: Does Investa use AI suggestions?
+A: It may show learning insights.
+
+Q30: Are suggestions guaranteed?
+A: No, they are for learning only.
+
+Q31: What is watchlist?
+A: Stocks you track.
+
+Q32: Can I add to watchlist?
+A: Yes.
+
+Q33: Can I remove stocks?
+A: Yes.
+
+Q34: What is market trend?
+A: Overall stock movement.
+
+Q35: Can I filter stocks?
+A: Yes.
+
+Q36: Can I sort stocks?
+A: Yes.
+
+Q37: What is gain/loss?
+A: In Paper Trading, it's simulated gain/loss. In Live Mode, it's real profit/loss.
+
+Q38: Can I see history?
+A: Yes, trading history available.
+
+Q39: Does Investa teach investing?
+A: Yes, through practice.
+
+Q40: Can I practice strategies?
+A: Yes.
+Q41: Can I learn long-term investing?
+A: Yes, you can invest long-term with real money in Live Mode, or practice it in Paper Trading.
+
+Q42: Can I simulate short selling?
+A: Only if enabled in platform.
+
+Q43: What is market cap?
+A: Total value of company shares.
+
+Q44: Does Investa show company info?
+A: Yes, basic details available.
+
+Q45: Can I practice diversification?
+A: Yes, buy multiple stocks.
+
+Q46: What is diversification?
+A: Spreading investments across stocks.
+
+Q47: Can I see trending stocks?
+A: Yes, trending section available.
+
+Q48: Does Investa update daily?
+A: Yes, data refreshes regularly.
+
+Q49: Can I refresh data?
+A: Yes.
+
+Q50: What is order quantity?
+A: Number of shares.
+
+Q51: Can I cancel orders?
+A: If supported.
+
+Q52: What is average price?
+A: Average purchase price based on real stock prices when the order was placed.
+
+Q53: Can I view profit percent?
+A: Yes.
+
+Q54: Can I learn risk management?
+A: Yes, you can practice risk management safely in Paper Trading before risking real money in Live Mode.
+
+Q55: What is volatility?
+A: Price fluctuation.
+
+Q56: Can I compare stocks?
+A: Yes.
+
+Q57: What is stock symbol?
+A: Unique stock identifier.
+
+Q58: Can I see sector info?
+A: Yes.
+
+Q59: Does Investa store history?
+A: Yes.
+
+Q60: Can I export data?
+A: If feature available.
+
+Q61: Can I practice swing trading?
+A: Yes.
+
+Q62: Does Investa charge fees?
+A: No real fees.
+
+Q63: Can I simulate commissions?
+A: Depends on settings.
+
+Q64: What is balance?
+A: Virtual money available.
+
+Q65: What is equity?
+A: Portfolio value.
+
+Q66: Can I see total return?
+A: Yes.
+
+Q67: Can I see daily change?
+A: Yes.
+
+Q68: What is price change?
+A: Stock movement.
+
+Q69: Can I use Investa offline?
+A: No.
+
+Q70: Does Investa require internet?
+A: Yes.
+
+Q71: Can I create multiple portfolios?
+A: If supported.
+
+Q72: What is stock chart?
+A: Visual price graph.
+
+Q73: Can I zoom chart?
+A: Yes.
+
+Q74: What is time frame?
+A: Chart duration.
+
+Q75: Can I switch timeframes?
+A: Yes.
+
+Q76: What is volume?
+A: Shares traded.
+
+Q77: Can I learn technical analysis?
+A: Yes.
+
+Q78: Does Investa show indicators?
+A: Basic indicators.
+
+Q79: What is moving average?
+A: Average price line.
+
+Q80: Can I simulate market crash?
+A: Through data.
+
+Q81: What is bull market?
+A: Rising prices.
+
+Q82: What is bear market?
+A: Falling prices.
+
+Q83: Can I reset account?
+A: Yes.
+
+Q84: Does Investa send notifications?
+A: If enabled.
+
+Q85: Can I change password?
+A: Yes.
+
+Q86: Is my data saved?
+A: Yes.
+
+Q87: Can I view account info?
+A: Yes.
+
+Q88: Can I contact support?
+A: Yes.
+
+Q89: Does Investa offer tutorials?
+A: Yes.
+
+Q90: What is simulated trading?
+A: Practice trading.
+
+Q91: Can I use Investa daily?
+A: Yes.
+
+Q92: What is watchlist price?
+A: Tracked price.
+
+Q93: Can I remove watchlist?
+A: Yes.
+
+Q94: What is top gainer?
+A: Highest rising stock.
+
+Q95: What is top loser?
+A: Biggest fall.
+
+Q96: Can I learn stock basics?
+A: Yes.
+
+Q97: Does Investa track profit?
+A: Yes.
+
+Q98: Can I see trade details?
+A: Yes.
+
+Q99: What is order history?
+A: Past trades.
+
+Q100: Can I clear history?
+A: If supported.
+
+Q101: Can I trade anytime?
+A: Yes.
+
+Q102: What is dashboard?
+A: Main overview.
+
+Q103: Can I customize dashboard?
+A: If available.
+
+Q104: What is total investment?
+A: Money invested.
+
+Q105: What is available balance?
+A: Remaining funds.
+
+Q106: Can I simulate long hold?
+A: Yes.
+
+Q107: Does Investa show profit chart?
+A: Yes.
+
+Q108: Can I learn portfolio management?
+A: Yes.
+
+Q109: What is risk?
+A: Potential loss.
+
+Q110: What is reward?
+A: Potential gain.
+
+Q111: Can I test strategies?
+A: Yes.
+
+Q112: What is buy price?
+A: Entry price.
+
+Q113: What is sell price?
+A: Exit price.
+
+Q114: Can I see average return?
+A: Yes.
+
+Q115: Does Investa rank users?
+A: Possibly.
+
+Q116: Can I practice without login?
+A: Limited.
+
+Q117: What is account section?
+A: User profile.
+
+Q118: Can I edit profile?
+A: Yes.
+
+Q119: Does Investa show news?
+A: If integrated.
+
+Q120: Can I learn market trends?
+A: Yes.
+
+Q121: What is simulated profit?
+A: A simulated gain in Paper Trading. Real gains occur in Live Mode.
+
+Q122: What is simulated loss?
+A: A simulated loss in Paper Trading. Real losses occur in Live Mode.
+
+Q123: Can I track performance weekly?
+A: Yes.
+
+Q124: Can I see monthly stats?
+A: Yes.
+
+Q125: What is market overview?
+A: General market.
+
+Q126: Can I learn trading terms?
+A: Yes.
+
+Q127: Does Investa provide help?
+A: Yes.
+
+Q128: What is help section?
+A: Support info.
+
+Q129: Can I search FAQs?
+A: Yes.
+
+Q130: Can I send feedback?
+A: Yes.
+
+Q131: What is leaderboard?
+A: Top users.
+
+Q132: Can I see rank?
+A: Yes.
+
+Q133: Can I improve rank?
+A: By trading.
+
+Q134: What is trade?
+A: Buy/sell.
+
+Q135: What is share?
+A: Unit stock.
+
+Q136: Can I learn stock basics?
+A: Yes.
+
+Q137: Does Investa simulate risk?
+A: Yes.
+
+Q138: What is investment?
+A: Buying assets.
+
+Q139: What is profit?
+A: Gain.
+
+Q140: What is loss?
+A: Negative gain.
+
+Q141: Can I track ROI?
+A: Yes.
+
+Q142: What is ROI?
+A: Return on investment.
+
+Q143: Can I view gain chart?
+A: Yes.
+
+Q144: Can I learn gradually?
+A: Yes.
+
+Q145: What is trade execution?
+A: Order completion.
+
+Q146: Can I view holdings?
+A: Yes.
+
+Q147: What is holding?
+A: Owned stock.
+
+Q148: Can I sell partial?
+A: Yes.
+
+Q149: Can I buy partial?
+A: Yes.
+
+Q150: What is stock price?
+A: Value per share.
+
+Q151: Can I track market movement?
+A: Yes.
+
+Q152: Does Investa update prices?
+A: Yes.
+
+Q153: Can I practice daily?
+A: Yes.
+
+Q154: Can I learn timing?
+A: Yes.
+
+Q155: What is trade log?
+A: Trade record.
+
+Q156: Can I review trades?
+A: Yes.
+
+Q157: Can I restart learning?
+A: Yes.
+
+Q158: What is simulated environment?
+A: Paper trading is fake trading. Live Mode is real trading.
+
+Q159: Can I learn safely?
+A: Yes.
+
+Q160: What is safe trading?
+A: No risk.
+
+Q161: Can I use browser?
+A: Yes.
+
+Q162: Does Investa require install?
+A: No.
+
+Q163: Can I access anywhere?
+A: Yes.
+
+Q164: Can I bookmark stocks?
+A: Yes.
+
+Q165: What is stock list?
+A: Available stocks.
+
+Q166: Can I scroll stocks?
+A: Yes.
+
+Q167: Can I filter sectors?
+A: Yes.
+
+Q168: What is learning platform?
+A: Education tool.
+
+Q169: Can I simulate gains?
+A: Yes.
+
+Q170: Can I simulate losses?
+A: Yes.
+
+Q171: Can I try again?
+A: Yes.
+
+Q172: Can I learn by doing?
+A: Yes.
+
+Q173: Can I track accuracy?
+A: Yes.
+
+Q174: Can I experiment?
+A: Yes.
+
+Q175: Can I test ideas?
+A: Yes.
+
+Q176: What is learning goal?
+A: Improve trading.
+
+Q177: Can I monitor portfolio?
+A: Yes.
+
+Q178: Can I open multiple tabs?
+A: Yes.
+
+Q179: Does Investa save automatically?
+A: Yes.
+
+Q180: Can I check status?
+A: Yes.
+
+Q181: What is virtual portfolio?
+A: Simulated holdings.
+
+Q182: Can I learn quickly?
+A: Yes.
+
+Q183: What is beginner mode?
+A: Simplified UI.
+
+Q184: Can I use advanced mode?
+A: Yes.
+
+Q185: Can I learn charts?
+A: Yes.
+
+Q186: Can I see metrics?
+A: Yes.
+
+Q187: What is metric?
+A: Performance data.
+
+Q188: Can I track score?
+A: Yes.
+
+Q189: What is score?
+A: Performance measure.
+
+Q190: Can I compare users?
+A: Yes.
+
+Q191: Can I learn strategies?
+A: Yes.
+
+Q192: Can I track improvement?
+A: Yes.
+
+Q193: Can I build confidence?
+A: Yes.
+
+Q194: Can I explore market?
+A: Yes.
+
+Q195: Can I try risk-free?
+A: Yes.
+
+Q196: What is simulated market?
+A: Practice market.
+
+Q197: Can I review portfolio?
+A: Yes.
+
+Q198: Can I learn investing basics?
+A: Yes.
+
+Q199: Can I use support?
+A: Yes.
+
+Q200: Where can I contact Investa support?
+A: Use the contact section on the website.
