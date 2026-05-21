@@ -8,3 +8,4 @@ chromadb
 google-generativeai
 yfinance
 python-dotenv
+groq
