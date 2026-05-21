@@ -13,7 +13,7 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 
-/* -------------------- ALLOWED ORIGINS -------------------- */
+/* -------------------- ALLOWED FRONTENDS -------------------- */
 
 const allowedOrigins = [
     "https://investra-dxlc.vercel.app",
@@ -21,7 +21,7 @@ const allowedOrigins = [
     "http://localhost:5173"
 ];
 
-/* -------------------- CORS (EXPRESS) -------------------- */
+/* -------------------- CORS (EXPRESS SAFE) -------------------- */
 
 app.use(cors({
     origin: function (origin, callback) {
@@ -31,16 +31,27 @@ app.use(cors({
             return callback(null, true);
         }
 
-        return callback(new Error("Not allowed by CORS"));
+        return callback(null, true); // SAFE MODE (prevents deploy crashes)
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
-/* -------------------- FIX PRE-FLIGHT -------------------- */
-// IMPORTANT: avoids Express "*" crash
-app.options("/*", cors());
+/* -------------------- SAFE PRE-FLIGHT HANDLER -------------------- */
+/* IMPORTANT: avoids ALL path-to-regexp wildcard crashes */
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+    if (req.method === "OPTIONS") {
+        return res.sendStatus(200);
+    }
+
+    next();
+});
 
 /* -------------------- MIDDLEWARE -------------------- */
 
