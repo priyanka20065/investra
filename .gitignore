@@ -36,3 +36,8 @@ __pycache__/
 # Generated Vector Database / Chroma files
 vectordb/
 chroma.sqlite3
+
+# Build and distribution directories
+dist/
+build/
+out/
