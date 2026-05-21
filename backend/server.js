@@ -21,17 +21,27 @@ const allowedOrigins = [
     "http://localhost:5173"
 ];
 
+if (process.env.FRONTEND_URL) {
+    process.env.FRONTEND_URL.split(",").forEach(url => {
+        allowedOrigins.push(url.trim());
+    });
+}
+
+const isOriginAllowed = (origin) => {
+    if (!origin) return true;
+    const cleanOrigin = origin.replace(/\/$/, "");
+    return allowedOrigins.some(allowed => allowed.replace(/\/$/, "") === cleanOrigin);
+};
+
 /* -------------------- CORS (EXPRESS SAFE) -------------------- */
 
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin) return callback(null, true);
-
-        if (allowedOrigins.includes(origin)) {
+        if (isOriginAllowed(origin)) {
             return callback(null, true);
         }
-
-        return callback(null, true); // SAFE MODE (prevents deploy crashes)
+        return callback(null, true); // SAFE MODE (Echoes back the request's origin)
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -39,10 +49,13 @@ app.use(cors({
 }));
 
 /* -------------------- SAFE PRE-FLIGHT HANDLER -------------------- */
-/* IMPORTANT: avoids ALL path-to-regexp wildcard crashes */
 
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    const origin = req.headers.origin;
+    if (origin) {
+        res.header("Access-Control-Allow-Origin", origin);
+    }
+    res.header("Access-Control-Allow-Credentials", "true");
     res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
     res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
@@ -61,7 +74,12 @@ app.use(express.json());
 
 const io = new Server(server, {
     cors: {
-        origin: allowedOrigins,
+        origin: function (origin, callback) {
+            if (!origin || isOriginAllowed(origin)) {
+                return callback(null, true);
+            }
+            return callback(null, true);
+        },
         methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         credentials: true
     }
